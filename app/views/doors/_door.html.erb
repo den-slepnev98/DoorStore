@@ -1,0 +1,63 @@
+<div class="col-xs-12 col-sm-10 col-sm-push-1 col-md-6 col-md-push-3">
+  <div class="form-details">
+    <%= form_for :door, method: m do |door| %>
+
+      <% if @door.errors.any? %>
+        <div class="alert alert-danger">
+          <h3>Щось пішло не так!</h3>
+          <h4><%= pluralize(@door.errors.count, "error") %>:</h4>
+          <ul>
+            <% @door.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+      <div class="field">
+        <%= door.text_field :name, autofocus: true, class: 'name-con', :placeholder => 'Назва' %>
+      </div>
+      <br/>
+
+      <div class="field">
+        <%= door.text_area :description, class: 'contact-area', :placeholder => 'Опис...' %>
+      </div>
+      <br/>
+
+      <div class="field">
+        <%= image_tag @door.photo || '', :class => 'door-image', :id => 'img-preview' %>
+        <br/>
+        <button type="button" id="upload_img" class="btn btn-default btn-contact"><%= photo_title %></button>
+        <%= door.file_field :photo, :style => 'display:none' %>
+      </div>
+      <br/>
+
+      <div class="col-md-6 col-md-push-3 col-sm-6 col-sm-push-3">
+        <div class="field">
+          <input type="number" name="door[min_price]" class="name-con" value="<%= @door.min_price %>" min="0.0" max="100.0" placeholder="Мін. ціна (грн.)" step="0.01">
+        </div>
+        <br/>
+
+        <div class="field">
+          <input type="number" name="door[width]" class="name-con" value="<%= @door.width %>" min="0" max="2000" placeholder="Ширина (мм.)" step="10">
+        </div>
+        <br/>
+
+        <div class="field">
+          <input type="number" name="door[height]" class="name-con" value="<%= @door.height %>" min="0" max="2000" placeholder="Висота (мм.)" step="10">
+        </div>
+        <br/>
+
+        <div class="field">
+          <%= select_tag 'material_id', options_for_select(@materials.collect {|u| [u.name, u.id]}, :selected=>@door.material_id), :class => 'name-con' %>
+        </div>
+        <br/>
+
+        <div class="field">
+          <%= door.submit submit_title, class: 'btn btn-default btn-contact' %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+<div class="clearfix"></div>

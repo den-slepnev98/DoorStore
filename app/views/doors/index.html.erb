@@ -1,0 +1,22 @@
+<%= content_for :css do %>
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<% end %>
+<!--gallery-starts-->
+<div class="gallery">
+  <div class="container">
+    <div class="gallery-text">
+      <h2>Каталог товарів</h2>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eu erat lacus, vel congue mauris. Fusce velit justo, faucibus eu sagittis ac, gravida quis tortor.</p>
+    </div>
+    <% if user_signed_in? && current_user.admin? %>
+      <%= link_to 'Додати двері', new_door_path, :class => 'btn btn-info btn-xs' %>
+    <% end %>
+    <aside class="col-lg-3 col-md-3 col-sm-6">
+      <%= render "doors/search" %>
+    </aside>
+    <div id="doors" class="grid-gallery">
+      <%= render "doors/doors" %>
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,102 @@
+<div class="contact">
+  <div class="container">
+    <h2><%= @door.name %></h2>
+    <div class="col-sm-12 col-md-6 col-lg-6 col-xs-12 contact-left">
+      <div id="door-img">
+        <a data-lightbox="example-set" data-title="<%= @door.name %>" href="">
+          <%= image_tag @door.photo, :class => 'show-door-img', :id => 'door' %>
+        </a>
+      </div>
+      <dl>
+        <dt>Опис:</dt>
+        <dd><%= @door.description %></dd>
+      </dl>
+      <dl>
+        <dt>Ціна від:</dt>
+        <dd><%= @door.min_price %> грн</dd>
+      </dl>
+      <%= javascript_include_tag 'shared/lightbox' %>
+    </div>
+    <% unless user_signed_in? && current_user.admin? %>
+    <div class="col-sm-12 col-md-6 col-lg-6 col-xs-12 contact-right">
+        <div class="form-details order">
+        <%= form_for :order do |f| %>
+
+          <% if @order && @order.errors.any? %>
+            <div class="alert alert-danger">
+              <h3>Щось пішло не так!</h3>
+              <h4><%= pluralize(@order.errors.count, "error") %>:</h4>
+              <ul>
+                <% @order.errors.full_messages.each do |msg| %>
+                  <li><%= msg %></li>
+                <% end %>
+              </ul>
+            </div>
+          <% end %>
+
+          <div class="row">
+            <div class="field col-md-6">
+              <label>Висота, мм:</label>
+              <input type="number" name="order[height]" class="name-con" value="<%= @door.height %>" min="0" max="2000" placeholder="Висота (мм.)" step="10">
+            </div>
+            <div class="field col-md-6">
+              <label>Ширина, мм:</label>
+              <input type="number" name="order[width]" class="name-con" value="<%= @door.width %>" min="0" max="2000" placeholder="Ширина (мм.)" step="10">
+            </div>
+          </div>
+          <div class="row">
+            <div class="field field1 col-md-6" id="door-opening">
+              <label>Відкриття:</label>
+              <div class="door-opening">
+                <div class="open change-opening">
+                  <%= image_tag 'door_right.png' %><br/>
+                  <label>Праве</label>
+                  <%= f.radio_button :door_opening, 'Праві', :checked => true %>
+                </div>
+                <div class="open">
+                  <%= image_tag 'door_left.png' %><br/>
+                  <label>Ліве</label>
+                  <%= f.radio_button :door_opening, 'Ліві' %>
+                </div>
+              </div>
+            </div>
+            <div class="field field1 col-md-6">
+              <label>Стандартний матеріал:</label>
+              <%= f.select :material_id, Material.all.collect {|u| [u.name, u.id]}, {:selected => @door.material_id}, {:disabled => true} %>
+              <label for="material-checkbox" class="checkbox-inline checkbox-label">
+                <input type="checkbox" id="material-checkbox">
+                Змінити матеріал
+              </label>
+              <%= hidden_field_tag 'mat_id', @door.material_id %>
+            </div>
+          </div>
+          <div class="row">
+            <div class="field col-md-12">
+              <%= f.text_area :comment, class: 'contact-area', :placeholder => 'Коментар...' %>
+            </div>
+          </div>
+          <br/>
+          <div class="row">
+            <div class="field col-md-8">
+              <%= f.text_field :user_name, :placeholder => 'П.І.Б.', :class => 'name-con' %>
+              <br>
+            </div>
+            <div class="field col-md-4">
+              <%= f.text_field :user_phone, :id => 'phone-num', :placeholder => 'Номер телефону', :class => 'name-con' %>
+              <br>
+            </div>
+          </div>
+          <div class="row">
+            <div class="field col-md-12">
+              <%= f.email_field :user_email, :class => 'email-con', :placeholder => 'Email' %>
+            </div>
+          </div>
+          <br/>
+          <%= f.submit 'Замовити', :class => 'btn btn-default btn-contact' %>
+        <% end %>
+      </div>
+    </div>
+    <div class="clearfix"></div>
+    <% end %>
+  </div>
+</div>

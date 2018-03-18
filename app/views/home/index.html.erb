@@ -1,0 +1,170 @@
+<!--head-starts-->
+  <% content_for :header do %>
+    <div class="header-bottom">
+      <div id="mycarousel" class="carousel slide" data-ride="carousel">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+          <li data-target="#mycarousel" data-slide-to="0" class="active"></li>
+          <li data-target="#mycarousel" data-slide-to="1"></li>
+          <li data-target="#mycarousel" data-slide-to="2"></li>
+        </ol>
+
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner" role="listbox">
+          <div class="item active">
+            <!--<img src="images/ban.jpg" alt="banner" class="banner-wid">-->
+            <%= image_tag 'ban.jpg', :alt => 'banner', :class => 'banner-wid' %>
+
+            <div class="carousel-caption">
+              <h3>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text </h3>
+            </div>
+          </div>
+          <div class="item">
+            <!--<img src="images/ban1.jpg" alt="banner" class="banner-wid">-->
+            <%= image_tag 'ban1.jpg', :alt => 'banner', :class => 'banner-wid' %>
+            <div class="carousel-caption">
+              <h3>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text </h3>
+            </div>
+          </div>
+          <div class="item">
+            <!--<img src="images/ban2.jpg" alt="banner" class="banner-wid">-->
+            <%= image_tag 'ban2.jpg', :alt => 'banner', :class => 'banner-wid' %>
+            <div class="carousel-caption">
+              <h3>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text </h3>
+            </div>
+          </div>
+        </div>
+        <!-- Controls -->
+
+      </div>
+    </div>
+  <% end %>
+<!--head-ends-->
+
+<!--content-starts-->
+<div class="content">
+  <% content_for :scroll_bottom do %>
+    <section class="best-quality">
+      <div class="container">
+        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.<a class="btn btn-default btn-quality" href="#" role="button">Find out more</a></p>
+      </div>
+    </section>
+<% end %>
+  <!--<div class="work-section">-->
+    <!--<div class="container">-->
+      <!--<div class="col-md-6 work-grids">-->
+        <!--<div class="work-grid-text">-->
+          <!--<ul>-->
+            <!--<li>-->
+              <!--<span class="glyphicon glyphicon-glass work-grid-icn" aria-hidden="true"></span>Care-->
+            <!--</li>-->
+            <!--<li>-->
+              <!--<span class="glyphicon glyphicon-wrench work-grid-icn" aria-hidden="true"></span>Installation-->
+            <!--</li>-->
+            <!--<li>-->
+              <!--<span class="glyphicon glyphicon-pushpin work-grid-icn" aria-hidden="true"></span>Preference-->
+            <!--</li>-->
+
+          <!--</ul>-->
+          <!--<div class="clearfix"></div>-->
+          <!--<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas tempus neque at imperdiet faucibus. Praesent eget orci quis orci pharetra eleifend a eu diam. Morbi facilisis vitae quam consectetur malesuada. Nullam a felis ut magna tincidunt luctus eu sit amet tortor.</p>-->
+          <!--<a class="btn btn-default work-btn" href="#" role="button">find out more</a>-->
+        <!--</div>-->
+      <!--</div>-->
+      <!--<div class="col-md-6 work-grids">-->
+        <!--<div class="work-img">-->
+          <!--<img src="/images/wrk.jpg" alt="/" class="work-img-wid">-->
+        <!--</div>-->
+      <!--</div>-->
+      <!--<div class="col-md-6 work-grids">-->
+        <!--<div class="work-img">-->
+          <!--<img src="/images/wrk1.jpg" alt="/" class="work-img-wid">-->
+        <!--</div>-->
+      <!--</div>-->
+      <!--<div class="col-md-6 work-grids">-->
+        <!--<div class="work-grid-text">-->
+          <!--<ul>-->
+            <!--<li>-->
+              <!--<span class="glyphicon glyphicon-usd work-grid-icn" aria-hidden="true"></span>Affordable-->
+            <!--</li>-->
+            <!--<li>-->
+              <!--<span class="glyphicon glyphicon-ok work-grid-icn" aria-hidden="true"></span>Quality Check-->
+            <!--</li>-->
+            <!--<li>-->
+              <!--<span class="glyphicon glyphicon-user work-grid-icn" aria-hidden="true"></span>Support-->
+            <!--</li>-->
+
+          <!--</ul>-->
+          <!--<div class="clearfix"></div>-->
+          <!--<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas tempus neque at imperdiet faucibus. Praesent eget orci quis orci pharetra eleifend a eu diam. Morbi facilisis vitae quam consectetur malesuada. Nullam a felis ut magna tincidunt luctus eu sit amet tortor.</p>-->
+          <!--<a class="btn btn-default work-btn" href="#" role="button">find out more</a>-->
+        <!--</div>-->
+      <!--</div>-->
+      <!--<div class="clearfix"></div>-->
+    <!--</div>-->
+  <!--</div>-->
+  <div class="our-latest">
+    <div class="container">
+      <h2>Our Latest Projects</h2>
+      <% @doors.each do |door| %>
+        <div class="col-md-4 latest-grid">
+          <div class="latest-bg-pos">
+            <%= image_tag door.photo, :class => 'latest-img' %>
+            <div class="latest-text">
+              <div class="border-line">
+                <h3><%= door.name %></h3>
+                <p>Ціна від: <%= door.min_price %><small>грн</small></p>
+                <%= link_to '', door_path(door), :class => 'show-link' %>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+      <div class="clearfix"></div>
+    </div>
+  </div>
+  <div class="twitter-feeds">
+    <!--script-->
+    <%= javascript_include_tag 'shared/responsiveslides.min' %>
+    <script>
+        $(function () {
+            $("#slider").responsiveSlides({
+                auto: true,
+                speed: 500,
+                namespace: "callbacks",
+                pager: true
+            });
+        });
+    </script>
+    <!--script-->
+    <div class="container">
+      <div class="slider">
+        <div class="callbacks_container">
+          <ul class="rslides" id="slider">
+            <li>
+              <div class="caption">
+                <h3>TWITTER FEEDS</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. consectetur adipiscing elit. consectetur adipiscing elit.</p>
+              </div>
+            </li>
+            <li>
+              <div class="caption">
+                <h3>TWITTER FEEDS</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. consectetur adipiscing elit. consectetur adipiscing . consectetur adipiscing elit</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. consectetur adipiscing elit consectetur adipiscing  elit.</p>
+              </div>
+            </li>
+            <li>
+              <div class="caption">
+                <h3>TWITTER FEEDS</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. consectetur adipiscing elit. consectetur adipiscing elit.</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. consectetur adipiscing elit.</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--content-ends-->

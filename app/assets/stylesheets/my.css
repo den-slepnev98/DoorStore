@@ -1,0 +1,129 @@
+img.door-image{
+    max-height: 200px;
+    max-width: 100%;
+    display: block;
+    margin: 0 auto;
+}
+div.door-item{
+    padding: 10px;
+}
+div.door-item>p{
+    margin-left: 10%;
+    color: #C7AB84;
+    font-size: 0.8em;
+}
+div.door-item>p:first-of-type{
+    font-size: 1.2em;
+    font-weight: bold;
+}
+div.door-item:hover{
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+select{
+    width: 100%;
+    padding: 7px;
+    outline: none;
+    display: block;
+    border: 2px solid #C7AB84;
+    background-color: transparent;
+    color: #1a1a1a;
+    font-family: 'Raleway';
+}
+div.alert-danger ul{
+    text-align: left;
+    padding-left: 5%;
+}
+div.door-item>a.show-link{
+    display: none;
+}
+#door-img{
+    text-align: center;
+}
+div>a>img.show-door-img{
+    max-height: 400px;
+}
+dl{
+    font-size: large;
+    font-family: 'Neucha';
+    color: #C7AB84;
+    text-align: left;
+}
+dl>dd{
+    font-family: BadScript;
+}
+nav ul.nav a>span {
+    font-family: 'Neucha' !important;
+    font-size: larger;
+}
+aside{
+    border: #C7AB84 1px solid;
+    height: 516px;
+}
+#search-price input{
+    font-family: 'Neucha';
+    color: #C7AB84;
+    border: 0;
+}
+#search-price p{
+    text-align: left;
+}
+div#caption{
+    font-size: xx-large;
+    font-family: 'Neucha';
+    color: #C7AB84;
+    margin-bottom: 20px;
+}
+.ui-widget.ui-widget-content {
+    border: 1px solid #e8caa2 !important;
+}
+.ui-widget-header {
+    background: #C7AB84 !important;
+}
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default, .ui-button, html .ui-button.ui-state-disabled:hover, html .ui-button.ui-state-disabled:active {
+    background: #e8caa2 !important;
+}
+#materials p{
+    margin-left: 5%;
+    margin-bottom: 5%;
+    text-align: left;
+    font-size: larger;
+    font-family: 'Neucha';
+    color: #C7AB84;
+}
+legend{
+    font-family: 'Neucha';
+}
+#search-price>label{
+    font-family: Neucha;
+    font-size: 21px;
+    font-weight: normal;
+}
+.our-latest{
+    margin-top: 10px;
+}
+.order div label{
+    font-family: Neucha;
+    color: #C7AB84;
+}
+.order label{
+    margin-top: 10px;
+    font-family: Neucha;
+    color: #C7AB84;
+    font-weight: 700;
+    font-size: large;
+    text-align: left;
+}
+.field1>.checkbox-label{
+    font-size: small;
+}
+.door-opening>div>input[type="radio"]{
+    display: none;
+}
+.door-opening>div{
+    display: inline-block;
+    padding: 5px;
+    margin: 5px;
+}
+.change-opening{
+    background-color: #fcf8e3;
+}

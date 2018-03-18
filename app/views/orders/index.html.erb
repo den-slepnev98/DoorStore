@@ -1,0 +1,45 @@
+<div class="container">
+  <div class="gallery-text">
+    <h2>Замовлення</h2>
+    </div>
+  <div class="table-responsive">
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th>Двері</th>
+        <th>Розміри, мм.</th>
+        <th>Завіси</th>
+        <th>Матеріал</th>
+        <th>Коментар</th>
+        <th>Замовник</th>
+        <th>Дата</th>
+        <th></th>
+      </tr>
+      </thead>
+      <tbody>
+      <% @orders.each do |order| %>
+        <tr>
+          <td><%= link_to Door.find(order.door_id).name, door_path(order.door_id) %></td>
+          <td><%= order.height.to_s + " x " + order.width.to_s %></td>
+          <td><%= order.door_opening %></td>
+          <td><%= Material.find(order.material_id).name %></td>
+          <td><%= order.comment %></td>
+          <td>
+            <ul>
+              <li><%= order.user_name %></li>
+              <li><%= order.user_email %></li>
+              <li><%= order.user_phone %></li>
+            </ul>
+          </td>
+          <td><%= order.created_at %></td>
+          <td>
+            <%= link_to order_delete_path(order), method: :delete, data: {confirm: 'Ви впевнені?'} do %>
+              <span class="glyphicon glyphicon-remove"></span>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

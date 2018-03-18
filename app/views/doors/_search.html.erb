@@ -1,0 +1,38 @@
+<div class="form-details">
+  <%= form_for :search, method: 'get', :url => doors_path, remote:true do |f| %>
+
+    <div id="caption">Пошук</div>
+    <br/>
+
+    <div id="search-price" class="field">
+      <label for="price">Ціна:</label>
+      <p>
+        <%= f.text_field :price, :id => 'price', :readonly => true %>
+      </p>
+
+      <div id="slider-range"></div>
+    </div>
+    <br/>
+
+    <div class="field" id="materials">
+      <fieldset>
+        <legend>Матеріал:</legend>
+        <% @materials.each do |material| %>
+          <p>
+            <label>
+              <%= f.check_box :materials, {multiple: true}, material.id, false %>
+              <%= material.name %>
+            </label>
+          </p>
+        <% end %>
+      </fieldset>
+    </div>
+    <br/>
+    <br/>
+
+    <div class="field">
+      <%= f.submit 'Search', class: 'btn btn-default btn-contact' %>
+    </div>
+
+  <% end %>
+</div>

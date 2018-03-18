@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>DoorStore</title>
+    <%= csrf_meta_tags %>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= javascript_include_tag 'application' %>
+
+    <%= yield :css %>
+  </head>
+
+  <body>
+  <!--head-starts-->
+  <div class="header" id="home">
+    <div class="header-top">
+      <nav class="navbar navbar-default nav-dflt-setin">
+        <div class="container">
+          <!-- Brand and toggle get grouped for better mobile display -->
+          <div class="navbar-header nav-min-wid">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <!--<h1><a class="navbar-brand" href="../index.html">DoorStore</a></h1>-->
+            <h1><%= link_to 'DoorStore', root_path, :class => 'navbar-brand' %></h1>
+          </div>
+          <!-- Collect the nav links, forms, and other content for toggling -->
+          <div class="collapse navbar-collapse " id="bs-example-navbar-collapse-1">
+
+            <ul class="nav navbar-nav nav-max-wid cl-effect-5" id="cl-effect-5">
+              <li>
+                <%= link_to root_path do %>
+                  <span data-hover="Головна" class="<%= 'active' if current_page?(root_path) %>">Головна</span>
+                <% end %>
+              </li>
+              <li>
+                <%= link_to about_path do %>
+                  <span data-hover="Про нас" class="<%= 'active' if current_page?(about_path) %>">Про нас</span>
+                <% end %>
+              </li>
+              <li>
+                <%= link_to doors_path do %>
+                  <span data-hover="Продукція"  class="<%= 'active' if current_page?(doors_path) %>">Продукція</span>
+                <% end %>
+              </li>
+              <li>
+                <%= link_to contact_path do %>
+                  <span data-hover="Контакти"  class="<%= 'active' if current_page?(contact_path) %>">Контакти</span>
+                <% end %>
+              </li>
+              <% if user_signed_in? && current_user.admin? %>
+                <li>
+                  <%= link_to orders_path do %>
+                    <span data-hover="Замовлення"  class="<%= 'active' if current_page?(orders_path) %>">Замовлення</span>
+                  <% end %>
+                </li>
+              <% end %>
+              <!--<li><a href="../index.html"><span data-hover="Головна">Головна</span></a></li>-->
+              <!--<li><a href="../doors.html"><span data-hover="Продукція">Продукція</span></a></li>-->
+              <!--<li><a href="#"><span data-hover="Про нас">Про нас</span></a></li>-->
+              <!--<li><a href="#"><span data-hover="Портфоліо">Портфоліо</span></a></li>-->
+              <!-- <li><a href="typography.html"><span data-hover="Short Codes">Short Codes</span></a></li> -->
+              <!--<li><a href="../contact.html"><span data-hover="Контакти">Контакти</span></a></li>-->
+            </ul>
+
+            <!--<ul class="nav navbar-nav nav-min-wid social">-->
+              <!--<li><a href="#" class="fb"></a></li>-->
+              <!--<li><a href="#" class="twit"></a></li>-->
+              <!--<li><a href="#" class="gplus"></a></li>-->
+              <!--<li><a href="#" class="inst"></a></li>-->
+            <!--</ul>+-->
+          </div>
+          <!-- /.navbar-collapse -->
+
+          <!-- Вхід | Вихід -->
+          <% if user_signed_in? %>
+            <div>
+            <hr/>
+              <p class="pull-right">
+                Привіт, <strong><%= current_user.email %></strong>
+                <%= link_to "Вийти", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
+              </p>
+            </div>
+          <% end %>
+
+          <div class="clearfix"></div>
+        </div><!-- /.container-fluid -->
+      </nav>
+    </div>
+    <%= yield :header %>
+  </div>
+
+  <%= yield :scroll_bottom %>
+
+  <!--head-ends-->
+  <% flash.each do |key, value| %>
+    <div class="alert alert-<%= key %>" role="alert"><%= value %></div>
+  <% end %>
+  <!--content-starts-->
+    <%= yield %>
+  <!--content-ends-->
+
+  <!--footer-starts-->
+  <div class="footer">
+    <div class="ft-top">
+      <div class="container">
+        <div class="social-media">
+          <h3>social media</h3>
+          <span></span>
+          <ul>
+            <li><a href="#" class="ftfb"></a></li>
+            <li><a href="#" class="fttwt"></a></li>
+            <li><a href="#" class="ftinst"></a></li>
+            <li><a href="#" class="ftdrib"></a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="ft-bottom">
+      <div class="container">
+        <p>&copy; 2018 DoorStore. All Rights Reserved. Design By <a href="http://www.w3layouts.com">W3layouts.</a></p>
+      </div>
+    </div>
+    <script type="text/javascript">
+        $(document).ready(function() {
+
+            var defaults = {
+                containerID: 'toTop', // fading element id
+                containerHoverID: 'toTopHover', // fading element hover id
+                scrollSpeed: 1200,
+                easingType: 'linear'
+            };
+            $().UItoTop({ easingType: 'easeOutQuart' });
+        });
+    </script>
+    <a href="" id="toTop" class="scroll" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
+  </div>
+  <!--footer-ends-->
+
+  <%= javascript_include_tag 'my' %>
+
+  </body>
+</html>

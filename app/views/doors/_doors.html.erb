@@ -1,0 +1,19 @@
+<% @doors.each do |door| %>
+  <div class="door-item col-lg-3 col-md-3 col-sm-6 gallery-grid">
+    <% if user_signed_in? && current_user.admin? %>
+      <%= link_to edit_door_path(door) do %>
+        <span class="glyphicon glyphicon-edit"></span>
+      <% end %>
+      <%= link_to door_path(door), method: :delete, data: {confirm: 'Ви впевнені?'} do %>
+        <span class="glyphicon glyphicon-remove"></span>
+      <% end %>
+    <% end %>
+    <%= image_tag door.photo, :class => 'door-image' %>
+    <%= link_to '', door_path(door), :class => 'show-link' %>
+    <p><%= door.name %></p>
+    <p>Ціна від: <%= door.min_price %>$</p>
+  </div>
+<% end %>
+<div class="col-md-12 col-xs-12 col-sm-12 gallery-grid" style="text-align: center">
+  <%= will_paginate @doors %>
+</div>
