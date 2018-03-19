@@ -48,6 +48,7 @@ development:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
 production:
+  adapter: mysql2
   url: <%= ENV['DATABASE_URL'] %>
 #  <<: *default
 #  database: DoorStore_production
