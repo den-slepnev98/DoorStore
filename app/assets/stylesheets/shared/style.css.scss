@@ -16,19 +16,19 @@ body{
 /*--fonts--*/
 @font-face{
     font-family: 'Hind Vadodara';
-	src:url(/assets/Hind_Vadodara/HindVadodara-Regular.ttf) format('truetype');
+	src:font-url('Hind_Vadodara/HindVadodara-Regular.ttf') format('truetype');
 }
 @font-face{
     font-family: 'Raleway';
-	src:url(/assets/Raleway/Raleway-Regular.ttf) format('truetype');
+	src:font-url('Raleway/Raleway-Regular.ttf') format('truetype');
 }
 @font-face {
     font-family: 'BadScript';
-    src: url("/assets/BadScript.ttf");
+    src: font-url("BadScript.ttf");
 }
 @font-face {
     font-family: 'Neucha';
-    src: url("/assets/Neucha.ttf");
+    src:font-url("Neucha.ttf");
 }
 /*--body-starts--*/
 .nav-dflt-setin {
