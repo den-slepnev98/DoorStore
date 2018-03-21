@@ -12,3 +12,4 @@ Rails.application.config.assets.version = '1.0'
 Rails.application.config.assets.precompile += %w( shared/responsiveslides.min.js )
 Rails.application.config.assets.precompile += %w( shared/lightbox.js )
 Rails.application.config.assets.precompile += %w( my.js )
+Rails.application.config.assets.precompile << /\.(?:svg|eot|woff|ttf)$/
